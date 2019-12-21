@@ -6,7 +6,27 @@ from sklearn.utils import shuffle
 import matplotlib.pyplot as pyplot
 import pickle #pickle is used to save trained model
 from matplotlib import style
+"""
+#this shit is multi core optimization, does not work as coded
+#from keras import backend as K
+import tensorflow as tf
 
+NUM_PARALLELL_EXEC_UNITS = 16
+
+config = tf.ConfigProto(intra_op_parallelism_threads=NUM_PARALLELL_EXEC_UNITS, inter_op_parallelism_threads=2, allow_soft_placement=True, device_count={'CPU': NUM_PARALLELL_EXEC_UNITS})
+
+session = tf.Session(config=config)
+
+#K.set_session(session)
+
+os.environ["OMP_NUM_THREADS"] = "16"
+
+os.environ["KMP_BLOCKTIME"] = "30"
+
+os.environ["KMP_SETTINGS"] = "1"
+
+os.environ["KMP_AFFINITY"] = "granularity=fine,verbose,compact1,0"
+#end multicore opt"""
 
 #read data into pandas dataframe, sep is listing delinieator
 data = pd.read_csv("student-mat.csv", sep=";")
@@ -26,10 +46,11 @@ y = np.array(data[predict])
 #splitting into training and 10% testing data
 x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(X, y, test_size = 0.1)
 
-"""
+
 #automating the process to train a mode with high accuracy with a for loop
+#comment out when not in use
 best = 0
-for _ in range(1000):
+for _ in range(50000):
 
     #this was left in here only for clean code
     #duplicate above may not serve functional purpose
@@ -50,7 +71,7 @@ for _ in range(1000):
         #section commented out that saves the model
         #saving trained model
         with open("grade_pred_model.pickle", "wb") as f:
-            pickle.dump(linear, f)"""
+            pickle.dump(linear, f)
 
 #defining variable.....i believe, probably incorrect prog term but whatevs
 pickle_in = open("grade_pred_model.pickle", "rb")
@@ -67,7 +88,7 @@ predictions = linear.predict(x_test)
 
 for x in range(len(predictions)):
     print(predictions[x], x_test[x], y_test[x])
-
+"""
 #visualization, p seems to be what is plotted out of the labels array
 p = 'absences'
 style.use("ggplot")
@@ -76,4 +97,4 @@ pyplot.xlabel(p)
 pyplot.ylabel("Final Grade (G3)")
 pyplot.show()
 
-#continue ml at 56 04
+#continue ml at 56 04"""
