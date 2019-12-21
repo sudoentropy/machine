@@ -23,12 +23,15 @@ X = np.array(data.drop([predict], 1))
 #features array
 y = np.array(data[predict])
 
+#splitting into training and 10% testing data
+x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(X, y, test_size = 0.1)
+
+
 #automating the process to train a mode with high accuracy with a for loop
 best = 0
-for _ in range(30):
+for _ in range(100000):
 
-    #splitting into training and 10% testing data
-    x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(X, y, test_size = 0.1)
+    x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(X, y, test_size=0.1)
 
     #fitting data to a linear model
     linear = linear_model.LinearRegression()
