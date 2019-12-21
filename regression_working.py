@@ -23,9 +23,9 @@ X = np.array(data.drop([predict], 1))
 #features array
 y = np.array(data[predict])
 
-#automating the process to train a mode with high accuracy with a loop
+#automating the process to train a mode with high accuracy with a for loop
 best = 0
-for _ in range(30)
+for _ in range(30):
 
     #splitting into training and 10% testing data
     x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(X, y, test_size = 0.1)
@@ -33,18 +33,22 @@ for _ in range(30)
     #fitting data to a linear model
     linear = linear_model.LinearRegression()
 
-    #section commented out that trains the model
+    """section commented out that trains the model
     #and dumps it into pickle juice
-    """no longer needed as model was trained and saved
+    no longer needed as model was trained and saved"""
     #create a model and test its accuracy
     linear.fit(x_train, y_train)
     accuracy = linear.score(x_test, y_test)
     print(accuracy)
-    
-    #section commented out that saves the model
-    #saving trained model
-    with open("grade_pred_model.pickle", "wb") as f:
-        pickle.dump(linear, f)"""
+
+    #if statement to kill for loop
+    if accuracy > best:
+        best = accuracy
+
+        #section commented out that saves the model
+        #saving trained model
+        with open("grade_pred_model.pickle", "wb") as f:
+            pickle.dump(linear, f)
 
 #defining variable.....i believe, probably incorrect prog term but whatevs
 pickle_in = open("grade_pred_model.pickle", "rb")
