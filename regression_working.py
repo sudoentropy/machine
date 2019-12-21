@@ -75,3 +75,5 @@ pyplot.scatter(data[p], data["G3"])
 pyplot.xlabel(p)
 pyplot.ylabel("Final Grade (G3)")
 pyplot.show()
+
+#continue ml at 56 04
