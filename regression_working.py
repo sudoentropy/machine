@@ -31,6 +31,8 @@ x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(X, y
 best = 0
 for _ in range(1000):
 
+    #this was left in here only for clean code
+    #duplicate above may not serve functional purpose
     x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(X, y, test_size=0.1)
 
     #fitting data to a linear model
@@ -65,3 +67,11 @@ predictions = linear.predict(x_test)
 
 for x in range(len(predictions)):
     print(predictions[x], x_test[x], y_test[x])
+
+#visualization
+p = 'G1'
+style.use("ggplot")
+pyplot.scatter(data[p], data["G3"])
+pyplot.xlabel(p)
+pyplot.ylabel("Final Grade (G3)")
+pyplot.show()
