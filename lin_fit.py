@@ -40,4 +40,4 @@ for x in range(len(pred)):
     print(pred[x], x_test[x], y_test[x])
 
 
-# using generated model
+# pick up at 44 min
