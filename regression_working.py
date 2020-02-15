@@ -25,7 +25,7 @@ y = np.array(data[predict])
 #splitting into training and 10% testing data
 x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(X, y, test_size = 0.1)
 
-"""
+
 #automating the process to train a mode with high accuracy with a for loop
 #comment out when not in use
 best = 0
@@ -52,30 +52,30 @@ for _ in range(1000):
         with open("grade_pred_model.pickle", "wb") as f:
             pickle.dump(linear, f)
 #end of automated loop
-"""
 
-#defining variable.....i believe, probably incorrect prog term but whatevs
-pickle_in = open("grade_pred_model.pickle", "rb")
-
-#loading saved pickle into linear model
-linear = pickle.load(pickle_in)
-
-#5dimensional linear models coeffficients
-print('Coefficient: \n', linear.coef_)
-print('Intercept: \n', linear.intercept_)
-
-#ai prediction
-predictions = linear.predict(x_test)
-
-for x in range(len(predictions)):
-    print(predictions[x], x_test[x], y_test[x])
-
-#visualization, p seems to be what is plotted out of the labels array
-p = 'G1'
-style.use("ggplot")
-pyplot.scatter(data[p], data["G3"])
-pyplot.xlabel(p)
-pyplot.ylabel("Final Grade (G3)")
-pyplot.show()
-
-#continue ml at 56 04
+#
+# #defining variable.....i believe, probably incorrect prog term but whatevs
+# pickle_in = open("grade_pred_model.pickle", "rb")
+#
+# #loading saved pickle into linear model
+# linear = pickle.load(pickle_in)
+#
+# #5dimensional linear models coeffficients
+# print('Coefficient: \n', linear.coef_)
+# print('Intercept: \n', linear.intercept_)
+#
+# #ai prediction
+# predictions = linear.predict(x_test)
+#
+# for x in range(len(predictions)):
+#     print(predictions[x], x_test[x], y_test[x])
+#
+# #visualization, p seems to be what is plotted out of the labels array
+# p = 'G1'
+# style.use("ggplot")
+# pyplot.scatter(data[p], data["G3"])
+# pyplot.xlabel(p)
+# pyplot.ylabel("Final Grade (G3)")
+# pyplot.show()
+#
+# #continue ml at 56 04
