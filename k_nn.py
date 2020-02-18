@@ -21,8 +21,6 @@ ref = le.fit_transform(list(data["REF"]))
 
 alt = le.fit_transform(list(data["ALT"]))
 
-clndisdb = le.fit_transform(list(data["CLINDISDB"]))
-
 cldn = le.fit_transform(list(data["CLNDN"]))
 
 clnhgvs = le.fit_transform(list(data["CLNHGVS"]))
@@ -61,16 +59,17 @@ highip = le.fit_transform(list(data["HIGH_INF_POS"]))
 
 predict = "CHROM"
 
-x = list(zip(POS, REF, ALT, AF_ESP, AF_EXAC, AF_TGP, CLNDISDB, CLNDISDBINCL, CLNDN, CLNDNINCL, CLNHGVS, CLNSIGINCL, CLNVC, CLNVI, MC, ORIGIN, SSR, CLASS, Allele, Consequence, IMPACT, SYMBOL, Feature_type, Feature, BIOTYPE, EXON, INTRON, cDNA_position, CDS_position, Protein_position, Amino_acids, Codons, DISTANCE, STRAND, BAM_EDIT, SIFT, PolyPhen, MOTIF_NAME, MOTIF_POS, HIGH_INF_POS, MOTIF_SCORE_CHANGE, LoFtool, CADD_PHRED, CADD_RAW, BLOSUM62))
-y = list(CHROM)
+x = list(zip(ref, alt, cldn, clnhgvs, clnvc, mc, consequence, impact, symbol, feature, biotype, exon, intron, aminoa, codons, bamedit, sift, polyophen, motifn))
+y = list(chrom)
 
 x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(
     x, y, test_size=0.1)
 
 print(x_train, y_test)
 
-# pick it up at 1:07 with another simpler dataset
-# this dataset is too complex atm
+model = KNeighborsClassifier(n_neighbors=1)
 
-
+model.fit(x_train, y_train)
+acc = model.score(x_test, y_test)
+print(acc)
 
