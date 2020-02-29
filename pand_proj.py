@@ -1,15 +1,22 @@
 """
-taking lead of gene researchers
-dumping most of the data to find important unique patterns
-Assumption: probably most of it is false patterns
+connecting sql alchemy to local sqlserver
 """
 
 
 import pandas as pd
 import sqlalchemy
+from sqlalchemy import create_engine
 
 # connecting to local sql database
-engine = sqlalchemy.create_engine('mysql+pymysql://root:@127.0.0.1:1433/csv_test')
+SERVER = 'ETHINK'
+DATABASE = 'csv_test'
+DRIVER = 'SQL Server Native Client 11.0'
+USERNAME = ''
+PASSWORD = ''
+DATABASE_CONNECTION = f'mssql://{USERNAME}:{PASSWORD}@{SERVER}/{DATABASE}?driver={DRIVER}'
+
+engine = create_engine(DATABASE_CONNECTION)
+connection = engine.connect()
 
 df = pd.read_sql_table("genes", engine)
 print(df)
