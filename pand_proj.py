@@ -6,6 +6,7 @@ have learned how to connect to sql server
 use sqlalchemy to talk to server
 some pyodb i guess because certain method would not work without it
 also have learned to reference select columns
+ref: https://www.youtube.com/watch?v=TdhEr7zS0YA
 """
 
 
@@ -42,18 +43,18 @@ connection = engine.connect()
 # df= pd.read_sql_table("human_liver", connection, columns=['genes'])
 # print(df.head())
 
-# df = pd.read_sql_table("human_liver", connection, columns=['genes', 'GSM2055788'])
-# print(df)
+df = pd.read_sql_table("human_liver", connection, columns=['genes', 'GSM2055788'])
+print(df)
 
 # this is loading the whole df
-df = pd.read_sql_table('human_liver', connection)
-# print(df.head())
-
-index = df.index
-print(index)
-
-columns = df.columns
-print(columns)
-
-values = df.values
-print(values)
+# df = pd.read_sql_table('human_liver', connection)
+# # print(df.head())
+#
+# index = df.index
+# print(index)
+#
+# columns = df.columns
+# print(columns)
+#
+# values = df.values
+# print(values)
