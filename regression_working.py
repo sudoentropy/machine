@@ -70,12 +70,12 @@ for _ in range(1000):
 # for x in range(len(predictions)):
 #     print(predictions[x], x_test[x], y_test[x])
 #
-# #visualization, p seems to be what is plotted out of the labels array
-# p = 'G1'
-# style.use("ggplot")
-# pyplot.scatter(data[p], data["G3"])
-# pyplot.xlabel(p)
-# pyplot.ylabel("Final Grade (G3)")
-# pyplot.show()
+#visualization, p seems to be what is plotted out of the labels array
+p = 'G1'
+style.use("ggplot")
+pyplot.scatter(data[p], data["G3"])
+pyplot.xlabel(p)
+pyplot.ylabel("Final Grade (G3)")
+pyplot.show()
 #
 # #continue ml at 56 04
