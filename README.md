@@ -1,5 +1,5 @@
 # machine_woman
-learning all bout dem tensors boy
+learning all about the tensors
 
 Q: What is Machine Woman?
 A: She is one of the best DJs of ALL TIME, check her out:
